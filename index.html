@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f9e9ed">
+  <title>Para Alicia ♡</title>
+  <style>
+    :root {
+      --pink: #f9e9ed;
+      --pink-2: #f1d5dd;
+      --rose: #c58d9d;
+      --deep: #865d6a;
+      --ink: #6e535b;
+      --cream: #fff9f6;
+      --white: #fffefe;
+      --shadow: 0 14px 35px rgba(137, 91, 108, .13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255,255,255,.85) 0 3px, transparent 4px),
+        radial-gradient(circle at 90% 28%, rgba(255,255,255,.7) 0 4px, transparent 5px),
+        linear-gradient(180deg, #fff8f7 0%, #f9e9ed 45%, #fff9f6 100%);
+      background-size: 95px 95px, 130px 130px, auto;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+    button { font: inherit; }
+    .wrap { width: min(100% - 34px, 760px); margin: 0 auto; }
+    .section { padding: 72px 0; position: relative; }
+    .eyebrow {
+      color: var(--rose); text-transform: uppercase; letter-spacing: .16em;
+      font-size: .72rem; font-weight: 800; text-align: center;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h2 {
+      text-align: center; color: var(--deep); font-family: Georgia, serif;
+      font-size: clamp(2rem, 8vw, 3rem); font-weight: 500; margin: 10px 0 14px;
+    }
+    .intro { text-align: center; max-width: 560px; margin: 0 auto 30px; line-height: 1.75; }
+    .tiny-heart { color: var(--rose); }
+    .kitty {
+      width: 112px; height: 105px; margin: 0 auto 18px; position: relative;
+      filter: drop-shadow(0 8px 7px rgba(137,91,108,.12));
+    }
+    .kitty .head {
+      position: absolute; width: 84px; height: 68px; left: 14px; top: 27px;
+      background: #fff; border: 2px solid #e8d7d8; border-radius: 48% 48% 43% 43%;
+    }
+    .kitty .ear { position:absolute; width:31px; height:34px; top:17px; background:#fff; border:2px solid #e8d7d8; transform:rotate(35deg); border-radius:5px 22px 4px 5px; }
+    .kitty .ear.left { left:17px; }
+    .kitty .ear.right { right:17px; transform:rotate(55deg) scaleX(-1); }
+    .kitty .eye { position:absolute; width:5px; height:8px; background:#65545a; border-radius:50%; top:55px; z-index:2; }
+    .kitty .eye.left { left:38px; } .kitty .eye.right { right:38px; }
+    .kitty .nose { position:absolute; width:8px; height:5px; background:#e7a9a8; border-radius:50%; top:66px; left:52px; z-index:2; }
+    .kitty .whisker { position:absolute; width:17px; height:1px; background:#b9a6a8; top:68px; z-index:2; }
+    .kitty .w1 {left:16px; transform:rotate(10deg)} .kitty .w2 {left:15px; top:74px; transform:rotate(-8deg)}
+    .kitty .w3 {right:16px; transform:rotate(-10deg)} .kitty .w4 {right:15px; top:74px; transform:rotate(8deg)}
+    .bow { position:absolute; right:7px; top:8px; width:37px; height:25px; z-index:3; }
+    .bow:before,.bow:after { content:""; position:absolute; width:18px; height:19px; background:#d98fa5; border:1px solid #c77f96; border-radius:75% 20% 75% 25%; }
+    .bow:before { left:0; transform:rotate(28deg); } .bow:after { right:0; transform:scaleX(-1) rotate(28deg); }
+    .bow i { position:absolute; z-index:2; width:9px; height:9px; border-radius:50%; background:#f5c7d2; border:1px solid #c77f96; left:14px; top:8px; }
+    .hero { min-height: 100svh; display:grid; place-items:center; text-align:center; padding:48px 0 62px; }
+    .hero-card {
+      background:rgba(255,254,254,.82); border:1px solid rgba(224,190,199,.8);
+      border-radius:32px; padding:34px 22px 30px; box-shadow:var(--shadow);
+      width:100%; position:relative; overflow:hidden;
+    }
+    .hero-card:before,.hero-card:after { content:"✿"; position:absolute; color:#e8b8c5; opacity:.7; font-size:2.2rem; }
+    .hero-card:before { top:13px; left:17px; transform:rotate(-18deg); }
+    .hero-card:after { bottom:12px; right:18px; transform:rotate(18deg); }
+    .hero h1 { font-family:Georgia,serif; color:var(--deep); font-size:clamp(2.7rem, 12vw, 4.4rem); font-weight:500; margin:4px 0 12px; }
+    .hero p { max-width:430px; margin:0 auto 24px; line-height:1.8; }
+    .pill {
+      border:0; border-radius:999px; background:var(--deep); color:white; padding:14px 24px;
+      box-shadow:0 7px 17px rgba(134,93,106,.2); cursor:pointer; transition:.25s;
+    }
+    .pill:active { transform:scale(.97); }
+    .pill:hover { background:#704a57; }
+    .hint { display:block; margin-top:14px; color:#a88b92; font-size:.78rem; }
+    .hidden { display:none !important; }
+    .reveal { animation: rise .75s ease both; }
+    @keyframes rise { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+    .floating { position:fixed; pointer-events:none; z-index:20; animation: floatUp 1.7s ease-out forwards; }
+    @keyframes floatUp { 0%{opacity:0;transform:translateY(10px) scale(.6)} 20%{opacity:1} 100%{opacity:0;transform:translateY(-125px) scale(1.25)} }
+    .divider { text-align:center; color:#d4a4b1; letter-spacing:.55em; margin:5px 0; }
+    .letter-card {
+      background:var(--cream); border:1px solid #ead7d9; border-radius:24px; padding:25px 18px;
+      box-shadow:var(--shadow); text-align:center;
+    }
+    .envelope-area { display:grid; place-items:center; min-height:230px; }
+    .envelope {
+      position:relative; width:min(280px, 82vw); height:165px; background:#e9b9c7;
+      border-radius:9px; box-shadow:0 13px 25px rgba(137,91,108,.18); cursor:pointer;
+      border:0; padding:0; perspective:700px;
+    }
+    .envelope:before {
+      content:""; position:absolute; inset:0; background:#f4d3dc;
+      clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%); border-radius:9px; z-index:3;
+    }
+    .flap {
+      position:absolute; inset:0; background:#d99bad; clip-path:polygon(0 0,100% 0,50% 60%);
+      transform-origin:top; transition:transform .8s; z-index:4;
+    }
+    .envelope.open .flap { transform:rotateX(180deg); }
+    .envelope .seal { position:absolute; z-index:5; top:66px; left:calc(50% - 20px); font-size:2rem; transition:.3s; }
+    .envelope.open .seal { opacity:0; transform:scale(.4); }
+    .envelope-note { position:absolute; z-index:2; left:8%; right:8%; bottom:8px; height:120px; padding:13px 9px; background:#fffaf8; border-radius:7px; transition:transform .8s; font-family:Georgia,serif; color:var(--deep); }
+    .envelope.open .envelope-note { transform:translateY(-75px); }
+    .tap-note { color:#a88b92; font-size:.82rem; margin-top:10px; text-align:center; }
+    .letter-text { line-height:1.85; text-align:left; white-space:pre-line; }
+    .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px; }
+    .polaroid { background:#fff; padding:9px 9px 15px; box-shadow:0 8px 20px rgba(137,91,108,.13); transform:rotate(var(--tilt, -1deg)); }
+    .polaroid:nth-child(even) { --tilt:1.5deg; }
+    .photo-slot {
+      aspect-ratio:1/1; background:linear-gradient(145deg,#f8e4e9,#fff6f2);
+      display:grid; place-items:center; overflow:hidden; color:#b78b98; text-align:center; padding:8px;
+    }
+    .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; }
+    .photo-slot .placeholder { font-size:.8rem; line-height:1.5; }
+    .polaroid figcaption { font-family:Georgia,serif; text-align:center; margin-top:11px; font-size:.92rem; color:#876873; }
+    .qualities { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .quality {
+      min-height:128px; border:1px solid #ead5dc; border-radius:18px; background:rgba(255,254,254,.88);
+      padding:15px 12px; color:var(--ink); text-align:center; cursor:pointer; box-shadow:0 6px 15px rgba(137,91,108,.07);
+      transition:transform .25s, background .25s;
+    }
+    .quality:active { transform:scale(.98); }
+    .quality .q-icon { display:block; font-size:1.45rem; margin-bottom:7px; }
+    .quality strong { display:block; color:var(--deep); font-family:Georgia,serif; font-size:1.02rem; }
+    .quality .phrase { display:block; font-size:.82rem; line-height:1.55; margin-top:9px; animation:rise .35s ease both; }
+    .quality.open { background:#fff5f7; border-color:#d9aebb; }
+    .gift-card { background:rgba(255,254,254,.88); border:1px solid #ead5dc; border-radius:27px; padding:25px 17px 30px; text-align:center; box-shadow:var(--shadow); }
+    .gift-stage { min-height:240px; display:grid; place-items:center; perspective:800px; }
+    .gift { position:relative; width:190px; height:145px; margin:20px auto; cursor:pointer; }
+    .gift-box { position:absolute; bottom:0; width:190px; height:112px; background:#e8aebd; border:2px solid #d493a6; border-radius:7px; overflow:hidden; }
+    .gift-box:before { content:""; position:absolute; width:30px; height:100%; background:#f8dbe2; left:78px; }
+    .gift-lid { position:absolute; top:26px; left:-7px; width:204px; height:32px; background:#d98fa5; border:2px solid #c77f96; border-radius:7px; transform-origin:10% 90%; transition:transform .9s ease .65s; z-index:3; }
+    .ribbon { position:absolute; z-index:4; width:30px; height:32px; top:27px; left:80px; background:#f8dbe2; transition:opacity .3s, transform .4s; }
+    .gift-bow { position:absolute; top:4px; left:72px; z-index:5; width:48px; height:30px; transition:transform .7s, opacity .5s; }
+    .gift-bow:before,.gift-bow:after { content:""; position:absolute; width:25px; height:22px; border:5px solid #c77f96; border-radius:80% 20% 80% 20%; }
+    .gift-bow:before { left:0; transform:rotate(25deg); } .gift-bow:after { right:0; transform:scaleX(-1) rotate(25deg); }
+    .gift.open .gift-bow { transform:translateY(-35px) rotate(30deg) scale(.5); opacity:0; }
+    .gift.open .gift-lid { transform:translate(-8px,-75px) rotate(-28deg); }
+    .gift.open .ribbon { opacity:0; transform:translateY(-25px); }
+    .gift-instruction { color:#a88b92; font-size:.84rem; }
+    .gift-reveal { animation:rise .8s ease both; margin-top:12px; }
+    .final-photo { width:min(230px,75%); aspect-ratio:4/5; object-fit:cover; border:9px solid white; box-shadow:0 9px 25px rgba(137,91,108,.18); transform:rotate(-2deg); }
+    .final-message { text-align:left; line-height:1.8; white-space:pre-line; margin:20px auto 0; max-width:520px; background:#fff8f6; border-radius:18px; padding:19px; }
+    footer { padding:30px 15px 45px; text-align:center; color:#a88b92; font-family:Georgia,serif; }
+    @media (min-width:620px) {
+      .gallery { grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+      .qualities { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .hero-card { padding:48px 40px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="kitty" aria-label="gatinha branca com laço rosa">
+          <span class="ear left"></span><span class="ear right"></span><span class="head"></span>
+          <span class="eye left"></span><span class="eye right"></span><span class="nose"></span>
+          <span class="whisker w1"></span><span class="whisker w2"></span><span class="whisker w3"></span><span class="whisker w4"></span>
+          <span class="bow"><i></i></span>
+        </div>
+        <div class="eyebrow">um carinho preparado especialmente</div>
+        <h1>Alicia ♡</h1>
+        <p>Um dia tão especial merece algo feito com carinho. Seja bem-vinda!</p>
+        <button class="pill" id="enterBtn">Entrar na surpresa ♡</button>
+        <span class="hint">Prepare-se para algumas surpresinhas...</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="hidden">
+    <section class="section" id="carta">
+      <div class="wrap">
+        <div class="eyebrow">um recadinho para você</div>
+        <h2>Uma cartinha ♡</h2>
+        <p class="intro">Algumas palavras merecem ser abertas com calma.</p>
+        <div class="letter-card">
+          <div class="envelope-area">
+            <button class="envelope" id="envelope" aria-label="Abrir envelope">
+              <span class="envelope-note">Com carinho,<br>para Alicia ♡</span>
+              <span class="flap"></span><span class="seal">🎀</span>
+            </button>
+          </div>
+          <p class="tap-note" id="envelopeHint">Toque no envelope para abrir ♡</p>
+          <div id="letterContent" class="hidden reveal">
+            <div class="divider">♡ ✿ ♡</div>
+            <p class="letter-text">Hoje é dia de celebrar você! Que nunca faltem motivos para sorrir, histórias boas para contar e pessoas queridas por perto. Preparei esse pequeno cantinho para reunir algumas coisas que fazem você ser tão especial. Aproveite cada pedacinho dessa surpresa! ♡</p>
+            <p style="text-align:right;color:#b47f91;font-family:Georgia,serif">Com carinho, Rick</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fotos">
+      <div class="wrap">
+        <div class="eyebrow">pequenos pedaços de momentos</div>
+        <h2>Memórias especiais</h2>
+        <p class="intro">Cada fotografia guarda um pedacinho de uma história. Aqui vão algumas lembranças para celebrar você. ♡</p>
+        <div class="gallery">
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 1<br><small>fotos/foto1.jpg</small></div></div><figcaption>Um registro especial ♡</figcaption></figure>
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 2<br><small>fotos/foto2.jpg</small></div></div><figcaption>Momentos para guardar</figcaption></figure>
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 3<br><small>fotos/foto3.jpg</small></div></div><figcaption>Seu jeitinho único ✿</figcaption></figure>
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 4<br><small>fotos/foto4.jpg</small></div></div><figcaption>Uma lembrança feliz</figcaption></figure>
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 5<br><small>fotos/foto5.jpg</small></div></div><figcaption>Que venham mais histórias</figcaption></figure>
+          <figure class="polaroid"><div class="photo-slot"><div class="placeholder">📷<br>Adicione sua foto 6<br><small>fotos/foto6.jpg</small></div></div><figcaption>Com carinho, sempre ♡</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="qualidades">
+      <div class="wrap">
+        <div class="eyebrow">dez motivos para admirar você</div>
+        <h2>Seu jeitinho especial</h2>
+        <p class="intro">Toque em cada cartão para descobrir uma mensagem. 🎀</p>
+        <div class="qualities" id="qualities"></div>
+      </div>
+    </section>
+
+    <section class="section" id="presente">
+      <div class="wrap">
+        <div class="eyebrow">a última surpresinha</div>
+        <h2>Um presente para você</h2>
+        <div class="gift-card">
+          <p class="intro">Tem mais um carinho esperando aí dentro...</p>
+          <div class="gift-stage">
+            <div>
+              <div class="gift" id="gift" role="button" tabindex="0" aria-label="Desamarrar laço e abrir presente">
+                <div class="gift-bow"></div><div class="gift-lid"></div><div class="ribbon"></div><div class="gift-box"></div>
+              </div>
+              <p class="gift-instruction" id="giftHint">Toque no laço para desamarrar e abrir ♡</p>
+            </div>
+          </div>
+          <div id="giftReveal" class="gift-reveal hidden">
+            <img class="final-photo" src="fotos/alicia-final.jpg" alt="Fotografia especial da Alicia" onerror="this.style.display='none';document.getElementById('finalPhotoPlaceholder').style.display='grid'">
+            <div id="finalPhotoPlaceholder" class="photo-slot" style="display:none;max-width:230px;aspect-ratio:4/5;margin:0 auto;border:8px solid white">📷<br>Adicione a foto final<br><small>fotos/alicia-final.jpg</small></div>
+            <div class="final-message"><strong style="font-family:Georgia,serif;color:#865d6a;font-size:1.2rem">E, para terminar essa surpresa… ♡</strong><br><br>Alicia, espero que seu novo ciclo seja repleto de momentos felizes, conquistas, sonhos realizados e motivos para sorrir.<br><br>Nunca perca esse seu jeito tão único de ser, essa alegria, espontaneidade e personalidade que tornam você uma pessoa tão especial.<br><br>Sou grato por ter tido a oportunidade de conhecer você e compartilhar tantos momentos. Que a vida continue trazendo coisas lindas para sua caminhada e que nunca faltem motivos para comemorar.<br><br><strong>Feliz aniversário, Alicia! Que seu dia seja tão especial quanto você! 🎀</strong><br><br><span style="color:#b47f91;font-family:Georgia,serif">Com carinho, Rick ♡</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="hidden">Feito com carinho, especialmente para Alicia ♡</footer>
+
+  <script>
+    const qualities = [
+      ["Alegria e bom humor","Seu jeito alegre tem o dom de deixar os momentos mais leves e arrancar sorrisos até nos dias comuns."],
+      ["Carisma","Você tem uma presença que chama atenção naturalmente e faz as pessoas se sentirem à vontade."],
+      ["Jeito brincalhão","Suas brincadeiras e seu bom humor deixam qualquer conversa mais divertida."],
+      ["Espontaneidade","Você tem um jeito verdadeiro e natural de viver cada momento, sem precisar forçar nada."],
+      ["Personalidade forte","Você sabe quem é, tem suas opiniões e não deixa de mostrar sua essência."],
+      ["Companheirismo","Sua companhia torna os momentos simples em lembranças que valem a pena guardar."],
+      ["Sinceridade","Sua maneira direta e verdadeira de falar é uma característica que merece ser valorizada."],
+      ["Jeito único de ser","Não existe outra pessoa exatamente como você — e isso é uma das coisas mais bonitas."],
+      ["Inteligência","Sua capacidade de aprender, pensar e enxergar as coisas faz parte do que torna você admirável."],
+      ["Determinação","Quando você decide seguir em frente, mostra força para buscar aquilo que deseja."]
+    ];
+    const qContainer = document.getElementById("qualities");
+    qualities.forEach(([name, phrase], index) => {
+      const button = document.createElement("button");
+      button.className = "quality";
+      button.type = "button";
+      button.innerHTML = `<span class="q-icon">🎀</span><strong>${index+1}. ${name}</strong><span class="phrase hidden">${phrase}</span>`;
+      button.addEventListener("click", () => {
+        button.classList.toggle("open");
+        button.querySelector(".phrase").classList.toggle("hidden");
+      });
+      qContainer.appendChild(button);
+    });
+
+    function sprinkle(count=18) {
+      const symbols = ["♡","✧","♥","✿"];
+      for (let i=0;i<count;i++) {
+        const el=document.createElement("span");
+        el.className="floating";
+        el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        el.style.left=(5+Math.random()*90)+"vw";
+        el.style.top=(45+Math.random()*45)+"vh";
+        el.style.color=["#d98fa5","#c58d9d","#e8b8c5"][Math.floor(Math.random()*3)];
+        el.style.fontSize=(14+Math.random()*17)+"px";
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),1800);
+      }
+    }
+    document.getElementById("enterBtn").addEventListener("click", () => {
+      document.getElementById("conteudo").classList.remove("hidden");
+      document.getElementById("footer").classList.remove("hidden");
+      sprinkle(28);
+      setTimeout(()=>document.getElementById("carta").scrollIntoView({behavior:"smooth"}),450);
+    });
+    document.getElementById("envelope").addEventListener("click", function() {
+      this.classList.toggle("open");
+      const opened=this.classList.contains("open");
+      document.getElementById("letterContent").classList.toggle("hidden",!opened);
+      document.getElementById("envelopeHint").textContent=opened?"Uma mensagem feita com carinho ♡":"Toque no envelope para abrir ♡";
+      if(opened) sprinkle(12);
+    });
+    function openGift() {
+      const gift=document.getElementById("gift");
+      if(gift.classList.contains("open")) return;
+      gift.classList.add("open");
+      document.getElementById("giftHint").textContent="Seu presente está se abrindo... ♡";
+      sprinkle(22);
+      setTimeout(()=>{
+        document.getElementById("giftReveal").classList.remove("hidden");
+        document.getElementById("giftHint").textContent="Uma lembrança especial para você ♡";
+        document.getElementById("giftReveal").scrollIntoView({behavior:"smooth",block:"center"});
+        sprinkle(24);
+      },1350);
+    }
+    document.getElementById("gift").addEventListener("click",openGift);
+    document.getElementById("gift").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openGift();}});
+  </script>
+</body>
+</html>
